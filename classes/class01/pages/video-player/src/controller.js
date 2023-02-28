@@ -29,9 +29,12 @@ export default class Controller {
         return;
       }
       const { blinkedLeft, blinkedRight } = msg.data.blinked;
+
       this.#blinkCounterLeft += blinkedLeft;
       this.#blinkCounterRight += blinkedRight;
+
       this.#view.togglePlayVideo({ blinkedLeft, blinkedRight });
+
       console.log("blinked", { blinkedLeft, blinkedRight });
     };
 
