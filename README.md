@@ -32,10 +32,11 @@ Marque esse projeto com uma estrela 🌟
 - Video Player
   - [x] - Deve ser possível de reproduzir ou pausar videos com o piscar de olhos 😁
   - [x] - Todo processamento de Machine Learning deve ser feito via Web worker
+  - [x] - Play no video com olho esquerdo e Pause no video com olho direito
 
 ### Desafios
 
-- [] - Aula 01 - Diferenciar piscada de olhos entre olho direito e esquerdo e atualizar log para mostrar qual olho que piscou.
+- [x] - Aula 01 - Diferenciar piscada de olhos entre olho direito e esquerdo e atualizar log para mostrar qual olho que piscou.
 - [] - Aula 02 - Reconhecer gestos de mãos individuais e printar no log
 - [] - Aula 03 - A definir
 - [] - Aula 04 - A definir
