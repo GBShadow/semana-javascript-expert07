@@ -47,9 +47,15 @@ async function getWorker() {
   return workerMock;
 }
 
+const [rootPath] = window.location.href.split("/pages/");
+
+const view = new View();
+const videoUrl = `${rootPath}/assets/video.mp4`;
+
+view.setVideoSrc(videoUrl);
+
 const worker = await getWorker();
 const camera = await Camera.init();
-const [rootPath] = window.location.href.split("/pages/");
 
 const factory = {
   async initialize() {
