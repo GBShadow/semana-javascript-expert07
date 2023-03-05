@@ -22,7 +22,7 @@ postMessage("READY");
 
 onmessage = async ({ data: video }) => {
   const blinked = await service.handBlinked(video);
-  if (!blinked) return;
+  if (!blinked.blinkedLeft && !blinked.blinkedRight) return;
 
   postMessage({
     blinked,

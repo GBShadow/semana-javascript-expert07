@@ -2,7 +2,8 @@ export default class Controller {
   #view;
   #worker;
   #camera;
-  #blinkCounter = 0;
+  #blinkCounterLeft = 0;
+  #blinkCounterRight = 0;
 
   constructor({ view, worker, camera }) {
     this.#view = view;
@@ -27,10 +28,14 @@ export default class Controller {
         ready = true;
         return;
       }
-      const blinked = msg.data.blinked;
-      this.#blinkCounter += blinked;
-      this.#view.togglePlayVideo();
-      console.log("blinked", blinked);
+      const { blinkedLeft, blinkedRight } = msg.data.blinked;
+
+      this.#blinkCounterLeft += blinkedLeft;
+      this.#blinkCounterRight += blinkedRight;
+
+      this.#view.togglePlayVideo({ blinkedLeft, blinkedRight });
+
+      console.log("blinked", { blinkedLeft, blinkedRight });
     };
 
     return {
@@ -53,13 +58,20 @@ export default class Controller {
   }
 
   log(text) {
-    const times = `         - blinked times: ${this.#blinkCounter}`;
-    this.#view.log(`logger: ${text}`.concat(this.#blinkCounter ? times : ""));
+    const times = `         - blinked times: left: ${
+      this.#blinkCounterLeft
+    } right: ${this.#blinkCounterRight}`;
+    this.#view.log(
+      `logger: ${text}`.concat(
+        this.#blinkCounterLeft || this.#blinkCounterRight ? times : ""
+      )
+    );
   }
 
   onBtnStart() {
     this.log("initializing detection...");
-    this.#blinkCounter = 0;
+    this.#blinkCounterLeft = 0;
+    this.#blinkCounterRight = 0;
     this.loop();
   }
 
